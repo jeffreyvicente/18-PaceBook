@@ -3,6 +3,7 @@
 // Thought = course 
 
 const { ObjectId } = require('mongoose').Types;
+//imports Thought and Uses in the ../models.
 const { User, Thought } = require('../models');
 
 const headCount = async () => {
@@ -106,7 +107,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Remove assignment from a user
+  // Remove friend from a user
   async removeReaction(req, res) {
     try {
       //console.log(res);
@@ -131,7 +132,7 @@ module.exports = {
     }
   },
   
-
+// Updates a users information
   async updateUser(req, res) {
     try {
       const user = await User.findOneAndUpdate(

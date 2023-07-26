@@ -2,6 +2,7 @@
 // User = Student
 // Thought = course 
 
+//imports Thought and Uses in the ../models.
 const { Thought, User } = require('../models');
 
 module.exports = {
@@ -11,6 +12,7 @@ module.exports = {
       const thoughts = await Thought.find();
       res.json(thoughts);
     } catch (err) {
+      // Returns an error if the query fails
       res.status(500).json(err);
     }
   },
@@ -20,10 +22,12 @@ module.exports = {
       const thought = await Thought.findOne({ _id: req.params.thoughtId })
         .select('-__v');
 
+      // Returns an error if the thought does not exist 
       if (!thought) {
         return res.status(404).json({ message: 'No thought with that ID' });
       }
 
+      // Returns the thought in a json in the command line
       res.json(thought);
     } catch (err) {
       res.status(500).json(err);
@@ -33,9 +37,13 @@ module.exports = {
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
+
+      // Returns the thought in a json in the command line
       res.json(thought);
     } catch (err) {
       console.log(err);
+
+      // Returns an error if the query fails
       return res.status(500).json(err);
     }
   },
@@ -44,6 +52,7 @@ module.exports = {
     try {
       const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
 
+      // Returns an error if the thought does not exist 
       if (!thought) {
         res.status(404).json({ message: 'No thought with that ID' });
       }
@@ -51,6 +60,7 @@ module.exports = {
       await User.deleteMany({ _id: { $in: thought.user } });
       res.json({ message: 'Thought and User deleted!' });
     } catch (err) {
+      // Returns an error if the query fails
       res.status(500).json(err);
     }
   },
@@ -63,12 +73,15 @@ module.exports = {
         { runValidators: true, new: true }
       );
 
+      // Returns an error if the thought does not exist 
       if (!thought) {
         res.status(404).json({ message: 'No thought with this id!' });
       }
 
+      // Returns the thought in a json in the command line
       res.json(thought);
     } catch (err) {
+      // Returns an error if the query fails
       res.status(500).json(err);
     }
   },
