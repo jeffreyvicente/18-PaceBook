@@ -1,0 +1,26 @@
+{
+  "name": "18-pacebook",
+  "version": "1.0.0",
+  "description": "## Description The PaceBook API for a social network web application that allows users to share their thoughts, react to friends' thoughts, and create a friend list. The API is built using Express.js for routing, MongoDB as the NoSQL database, and Mongoose. The application is designed to handle large amounts of unstructured data and offers various routes to interact with users, thoughts, reactions, and friends.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffreyvicente/18-PaceBook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffreyvicente/18-PaceBook/issues"
+  },
+  "homepage": "https://github.com/jeffreyvicente/18-PaceBook#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^7.0.2",
+    "nodemon": "^2.0.9"
+  }
+}
