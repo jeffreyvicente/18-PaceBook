@@ -22,6 +22,8 @@ module.exports = {
         headCount: await headCount(),
       };
 
+      console.log("Getting all users");
+      console.log(userObj);
       res.json(userObj);
     } catch (err) {
       console.log(err);
@@ -82,14 +84,14 @@ module.exports = {
   },
 
   // Add an assignment to a user
-  async addAssignment(req, res) {
+  async addReaction(req, res) {
     console.log('You are adding an assignment');
     console.log(req.body);
 
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $addToSet: { reactions: req.body } },
+        { $addToSet: { reaction: req.body } },
         { runValidators: true, new: true }
       );
 
@@ -105,18 +107,43 @@ module.exports = {
     }
   },
   // Remove assignment from a user
-  async removeUser(req, res) {
+  async removeReaction(req, res) {
     try {
+      //console.log(res);
+      //console.log(req);
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        { $pull: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       );
 
+      console.log(user);
+  
       if (!user) {
         return res
           .status(404)
           .json({ message: 'No user found with that ID :(' });
+      }
+  
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  
+
+  async updateUser(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body },
+        { runValidators: true, new: true }
+      );
+
+      console.log(user);
+
+      if (!user) {
+        res.status(404).json({ message: 'No thought with this id!' });
       }
 
       res.json(user);
@@ -124,4 +151,6 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+
 };
