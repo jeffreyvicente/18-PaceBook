@@ -44,16 +44,26 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ```
 
 ## Preview
+View Insomnia Demo on [YouTube](https://notexpress-pro.herokuapp.com/notes)
 
+![alt text](/assets/01-GetAllUserAndThoughts.gif)
+Querying all Users in the database | Querying all Thoguths in the database
 
+![alt text](/assets/02-GetSingleUserAndThoughts.gif)
+Querying a single Users in the database | Querying a single Thoguths in the database
 
+![alt text](/assets/03-UsersCRUD.gif)
+Delete, Post and Update for Thoguths and Users in Insomnia
+
+![alt text](/assets/02-GetSingleUserAndThoughts.gif)
+Post and Update friends in Insomnia 
 
 ## Features
 The PaceBook API has the following features:
-- Create, read, update, and delete blog posts: Logged-in users can create new blog posts, view existing posts, update their own posts, and delete their posts.
-- Comment on blog posts: Users can comment on blog posts created by other users.
-- Logged-in users have access to a personalized dashboard where they can view and manage their own blog posts.
-- The homepage displays all blog posts with the most recent ones appearing first.
+- Querying all Users and Thoguhts in the database.
+- Querying a single Users and Thoughts in the database.
+- Allows the user to delete, post and update different thoguhts and users.
+- API route to post and update User's friends.
 
 ## Technologies Used
 - Node.js
