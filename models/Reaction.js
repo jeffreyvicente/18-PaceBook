@@ -2,13 +2,13 @@ const { Schema, Types } = require('mongoose');
 
 const reactionSchema = new Schema(
     {
-        reactionID: {
-            type: Schema.Types.ObjectId,
+        reactionId: {
+            type: Types.ObjectId,
             default: () => new Types.ObjectId(),
         },
         reactionBody: {
             type: String,
-            minlength: 1,
+            required: true,
             maxlength: 280,
         },
         username: {
@@ -20,7 +20,14 @@ const reactionSchema = new Schema(
             default: Date.now,
             get: (timestamp) => timestamp.toLocaleString(),
         },
+    },
+    {
+        toJSON: {
+            getters: true
+        },
+        id: false
     }
 );
+
 
 module.exports = reactionSchema;
