@@ -84,31 +84,56 @@ module.exports = {
     }
   },
 
-  // Add an assignment to a user
+  // Add an reaction to a user
   async addReaction(req, res) {
     console.log('You are adding an assignment');
     console.log(req.body);
 
     try {
-      const user = await User.findOneAndUpdate(
-        { _id: req.params.userId },
-        { $addToSet: { reaction: req.body } },
+      const thought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $addToSet: { reactions: req.body } },
         { runValidators: true, new: true }
       );
 
-      if (!user) {
+      if (!thought) {
         return res
           .status(404)
           .json({ message: 'No user found with that ID :(' });
       }
 
-      res.json(user);
+      res.json(thought);
     } catch (err) {
       res.status(500).json(err);
     }
   },
-  // Remove friend from a user
   async removeReaction(req, res) {
+    try {
+      //console.log(res);
+      //console.log(req);
+      const thought  = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $pull: { reactions: {_id: req.params.reactionId} } },
+        { runValidators: true, new: true }
+      );
+
+      console.log(thought);
+  
+      if (!thought) {
+        return res
+          .status(404)
+          .json({ message: 'No user found with that ID :(' });
+      }
+  
+      res.json(thought);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+
+  // Remove friend from a user
+  async removeFriend(req, res) {
     try {
       //console.log(res);
       //console.log(req);
@@ -126,6 +151,30 @@ module.exports = {
           .json({ message: 'No user found with that ID :(' });
       }
   
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+  //Add a friend to a user.
+  async addFriend(req, res) {
+    console.log('You are adding an friend');
+    console.log(req.body);
+
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      );
+
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: 'No user found with that ID :(' });
+      }
+
       res.json(user);
     } catch (err) {
       res.status(500).json(err);
