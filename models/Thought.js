@@ -35,6 +35,8 @@ thoughtSchema.virtual('reactionCount').get(function(){
     return this.reactions.length;
 });
 
+// Creates a model called 'Thought'. 
 const Thought = model('Thought', thoughtSchema);
 
+// Exports the router
 module.exports = Thought;

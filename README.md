@@ -44,7 +44,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ```
 
 ## Preview
-View Insomnia Demo on [YouTube](https://notexpress-pro.herokuapp.com/notes)
+View Insomnia Demo on [YouTube](https://www.youtube.com/watch?v=j9gPD4A6YJM)
 
 ![alt text](/assets/01-GetAllUserAndThoughts.gif)
 Querying all Users in the database | Querying all Thoguths in the database

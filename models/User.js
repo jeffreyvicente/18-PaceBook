@@ -42,6 +42,8 @@ userSchema.virtual('friendCount').get(function() {
     return this.friends.length;
 });
 
+// Creates a model called 'User'. 
 const User = model('User', userSchema);
 
+// Exports the router
 module.exports = User;
