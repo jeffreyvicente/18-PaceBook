@@ -46,6 +46,10 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ## Preview
 View Insomnia Demo on [YouTube](https://www.youtube.com/watch?v=j9gPD4A6YJM)
 
+
+https://github.com/jeffreyvicente/18-PaceBook/assets/14005441/4abe34da-74a5-45f5-9ce5-34bbf9d99a51
+
+
 ![alt text](/assets/01-GetAllUserAndThoughts.gif)
 Querying all Users in the database | Querying all Thoguths in the database
 
